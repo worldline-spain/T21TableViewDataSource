@@ -156,7 +156,8 @@ public class DataSourceItem : DataSourceComparable, Hashable {
 The main purpose is to offer the possibility to add different types of items into the DataSource using the **Any** value. Of course, we will then have to use a downcast `as!` to access the different types. For example we could have: 
 
 ```
-// if we want to add this kind of items to the DataSource they should be subclasses of Animal class: let items: [Animal] = [Lion(),Elephant(),Zebra()]
+// if we want to add this kind of items to the DataSource they should be subclasses of Animal class: 
+let items: [Animal] = [Lion(),Elephant(),Zebra()]
 
 //with the DataSourceItem we can have completely different ItemTypes.
 let items: [DataSourceItem] =  [DataSourceItem(Lion),DataSourceItem(Train),DataSourceItem(Elephant),DataSourceItem(Plane),DataSourceItem(Zebra),DataSourceItem(Car)]
@@ -220,7 +221,7 @@ self.dataSource.addItems([newItemC])
 
 ```
 
-The DataSource checks if an item already exists by its `uid` in this case `"itemC"` and updates its values. Remember that the client can create custom classes to apply a sorting by `Date` or by `String` ...
+The DataSource checks if an item already exists by its `uid` in this case `"itemC"` and updates its values. Remember that the client can create custom classes to apply a different sorting like for example by `Date` or by `String` or by whatever he wants.
 
 ### Adding items to the DataSource class
 
