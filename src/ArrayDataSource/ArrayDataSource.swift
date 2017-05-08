@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class ArrayDataSource<ItemType: Any> where ItemType: DataSourceComparable, ItemType: Hashable {
+public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, ItemType: Hashable {
     
     private typealias ItemTypeHashValue = Int
     
@@ -292,35 +292,4 @@ extension ArrayDataSource : CustomStringConvertible {
 
 public protocol DataSourceComparable {
     static func <(lhs: Self, rhs: Self) -> Bool
-}
-
-public class DataSourceItem : DataSourceComparable, Hashable {
-    
-    public private(set) var value: Any
-    public private(set) var uid: String
-    public private(set) var index: Float = -1
-    
-    public init(_ value: Any, _ uid: String, _ index: Float = -1) {
-        self.value = value
-        self.uid = uid
-        self.index = index
-    }
-    
-    public var hashValue: Int {
-        return self.uid.hashValue
-    }
-}
-
-extension DataSourceItem : CustomStringConvertible {
-    public var description: String {
-        return self.uid
-    }
-}
-
-public func ==(lhs: DataSourceItem, rhs: DataSourceItem) -> Bool {
-    return lhs.hashValue == rhs.hashValue
-}
-
-public func <(lhs: DataSourceItem, rhs: DataSourceItem) -> Bool {
-    return lhs.index < rhs.index
 }

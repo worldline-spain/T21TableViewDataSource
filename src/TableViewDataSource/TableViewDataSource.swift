@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class TableViewDataSource<ItemType: Any> : NSObject, UITableViewDataSource, UITableViewDelegate where ItemType: DataSourceComparable, ItemType: Hashable {
+open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITableViewDelegate where ItemType: DataSourceComparable, ItemType: Hashable {
     
     private var dataSource = ArrayDataSource<ItemType>()
     
