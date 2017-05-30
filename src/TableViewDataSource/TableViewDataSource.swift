@@ -35,8 +35,16 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
         return dataSource[index]
     }
     
+    public subscript(uid: String) -> ItemType? {
+        return dataSource[uid]
+    }
+    
     public var count: Int {
         return dataSource.count
+    }
+    
+    public var items: [ItemType] {
+        return dataSource.items
     }
     
     //MARK: TableView DataSource & Delegate Functors
