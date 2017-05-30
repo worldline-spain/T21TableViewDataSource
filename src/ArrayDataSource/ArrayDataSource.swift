@@ -24,6 +24,12 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         return orderedDataSource[index]
     }
     
+    public subscript(uid: String) -> ItemType? {
+        return orderedDataSource.filter({ (item) -> Bool in
+            return item.hashValue == uid.hashValue
+        }).first
+    }
+    
     public var count: Int {
         return orderedDataSource.count
     }
