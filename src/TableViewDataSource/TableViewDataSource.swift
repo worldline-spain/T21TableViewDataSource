@@ -18,7 +18,9 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
 
     public var sortingFunction: ( _ a: ItemType,_ b: ItemType) -> Bool = { return $0 < $1 } {
         didSet {
-            self.resetItems(self.dataSource.items)
+            self.dataSource.setSortingFunction(self.sortingFunction, {
+                self.resetItems(self.dataSource.items)
+            })
         }
     }
     

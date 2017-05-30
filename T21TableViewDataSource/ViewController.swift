@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     let dataSource = TableViewDataSource<DataSourceItem>()
     
+    private var sortingFunctionType : Bool = false
+    
     @IBOutlet
     weak var tableView: UITableView!
     
@@ -105,6 +107,16 @@ class ViewController: UIViewController {
             
             dataSource.addItems(refreshItems)
         }
+    }
+    
+    @IBAction
+    func buttonChangeSortingFunctionPressed() {
+        if sortingFunctionType {
+            dataSource.sortingFunction = { return $0 < $1 }
+        } else {
+            dataSource.sortingFunction = { return $1 < $0 }
+        }
+        sortingFunctionType = !sortingFunctionType
     }
     
     
