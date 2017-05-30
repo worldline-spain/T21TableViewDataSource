@@ -31,7 +31,7 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
         }
     }
     
-    subscript(index: Int) -> ItemType? {
+    public subscript(index: Int) -> ItemType? {
         return dataSource[index]
     }
     
