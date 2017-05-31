@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,6 +26,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="re9-TC-oDs">
+                                <rect key="frame" x="104.5" y="539" width="166" height="30"/>
+                                <state key="normal" title="Change sorting function"/>
+                                <connections>
+                                    <action selector="buttonChangeSortingFunctionPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="c6w-7q-Hpi"/>
+                                </connections>
+                            </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRe-4T-bcK">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -79,6 +86,8 @@
                             <constraint firstItem="pRe-4T-bcK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RGK-8I-hPt"/>
                             <constraint firstItem="Y6T-gx-lG3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Rwi-yV-CNH"/>
                             <constraint firstItem="pRe-4T-bcK" firstAttribute="top" secondItem="T7y-U7-OEZ" secondAttribute="bottom" id="Rxe-Ds-sJ6"/>
+                            <constraint firstItem="T7y-U7-OEZ" firstAttribute="top" secondItem="re9-TC-oDs" secondAttribute="bottom" constant="10" id="XvK-Gu-oBS"/>
+                            <constraint firstItem="re9-TC-oDs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YvK-Cy-Nfv"/>
                             <constraint firstAttribute="trailing" secondItem="pRe-4T-bcK" secondAttribute="trailing" id="dFU-Z7-Cg7"/>
                             <constraint firstItem="Y6T-gx-lG3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kGK-gk-5n3"/>
                             <constraint firstAttribute="trailing" secondItem="T7y-U7-OEZ" secondAttribute="trailing" id="u0R-sy-VBg"/>

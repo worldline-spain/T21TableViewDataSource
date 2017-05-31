@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, ItemType: Hashable {
     
     private typealias ItemTypeHashValue = Int
@@ -38,7 +37,21 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         return orderedDataSource
     }
     
-    public var sortingFunction: ( _ a: ItemType,_ b: ItemType) -> Bool = { return $0 < $1 }
+    private var innerSortingFunction : ( _ a: ItemType,_ b: ItemType) -> Bool = { return $0 < $1 }
+    
+    public func setSortingFunction( _ sortingFunction: @escaping ( _ a: ItemType,_ b: ItemType) -> (Bool), _ onCompletion: @escaping () -> ()) {
+            let newOperation = BlockOperation(block: {
+                self.innerSortingFunction = sortingFunction
+                DispatchQueue.main.sync {
+                    onCompletion()
+                }
+            })
+            addNewOperation(newOperation)
+    }
+    
+    public func getSortingFunction() -> ( _ a: ItemType,_ b: ItemType) -> (Bool) {
+        return innerSortingFunction
+    }
     
     public func addItems (_ items: [ItemType], _ beforeCompletion: @escaping () -> () = { }, _ onCompletion: @escaping (_ indexesToRemove: [Int], _ indexesToInsert: [Int], _ indexesToReload: [Int]) -> () = { (indexesToRemove,indexesToInsert,indexesToReload) -> () in }) {
         
@@ -58,7 +71,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
                     orderedNewItems.append(element)
                 }
             }
-            orderedNewItems = orderedNewItems.sorted(by: self.sortingFunction)
+            orderedNewItems = orderedNewItems.sorted(by: self.innerSortingFunction)
             
             //calculate the deleted indexes ordered using the generated hash
             removedIndexes.reserveCapacity(newItemsHash.count)
@@ -69,7 +82,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
             }
             
             //find the indexes after the insertions/deletions
-            let modifications = self.findIndexes(removedIndexes, orderedNewItems, &self.orderedDataSource, self.sortingFunction)
+            let modifications = self.findIndexes(removedIndexes, orderedNewItems, &self.orderedDataSource, self.innerSortingFunction)
             
             //replace the datasource with the indexes
             
@@ -113,7 +126,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         let newOperation = BlockOperation(block: {
             
             var orderedDataSourceCopy = self.orderedDataSource
-            let sortingFunctionCopy = self.sortingFunction
+            let sortingFunctionCopy = self.innerSortingFunction
             
             var newItemsHash = Dictionary<Int,Bool>()
             var removedIndexes: [(Int,ItemType)] = []
@@ -154,7 +167,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         
         let newOperation = BlockOperation(block: {
             
-            let sortingFunctionCopy = self.sortingFunction
+            let sortingFunctionCopy = self.innerSortingFunction
             let oldCount = self.orderedDataSource.count
             
             let orderedNewItems = items.sorted(by: sortingFunctionCopy)
