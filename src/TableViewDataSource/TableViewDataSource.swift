@@ -87,7 +87,7 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
         }, {(deletions,insertions,reloads) -> () in
             if let t = self.tableView {
                 var reloadIndexPaths = [IndexPath]()
-                reloadIndexPaths.reserveCapacity(deletions.count)
+                reloadIndexPaths.reserveCapacity(reloads.count)
                 for row in reloads {
                     reloadIndexPaths.append(IndexPath(row: row,section: 0))
                 }
