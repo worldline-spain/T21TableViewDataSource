@@ -33,8 +33,13 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         return orderedDataSource.count
     }
     
-    public var items: [ItemType] {
-        return orderedDataSource
+    internal(set) var items: [ItemType] {
+        get {
+            return orderedDataSource
+        }
+        set (value) {
+            orderedDataSource = value
+        }
     }
     
     private var innerSortingFunction : ( _ a: ItemType,_ b: ItemType) -> Bool = { return $0 < $1 }
@@ -53,7 +58,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         return innerSortingFunction
     }
     
-    public func addItems (_ items: [ItemType], _ beforeCompletion: @escaping () -> () = { }, _ onCompletion: @escaping (_ indexesToRemove: [Int], _ indexesToInsert: [Int], _ indexesToReload: [Int]) -> () = { (indexesToRemove,indexesToInsert,indexesToReload) -> () in }) {
+    public func addItems (_ items: [ItemType], _ beforeCompletion: @escaping () -> () = { }, _ onCompletion: @escaping ( _ newDataSource: [ItemType], _ indexesToRemove: [Int], _ indexesToInsert: [Int], _ indexesToReload: [Int]) -> () = { (newDataSource,indexesToRemove,indexesToInsert,indexesToReload) -> () in }) {
         
         let newOperation = BlockOperation(block: {
             
@@ -106,8 +111,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
             
             DispatchQueue.main.sync {
                 beforeCompletion()
-                self.orderedDataSource = orderedDataSourceCopy
-                onCompletion(modifications.indexesToRemove,modifications.indexesToInsert,finalIndexesToReload)
+                onCompletion(orderedDataSourceCopy,modifications.indexesToRemove,modifications.indexesToInsert,finalIndexesToReload)
             }
         })
         addNewOperation(newOperation)
@@ -121,7 +125,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         queue.addOperation(newOperation)
     }
     
-    public func removeItems (_ items: [ItemType], _ beforeCompletion: @escaping () -> () = { }, _ onCompletion: @escaping (_ indexesToRemove: [Int]) -> () = { (indexesToRemove) -> () in }) {
+    public func removeItems (_ items: [ItemType], _ beforeCompletion: @escaping () -> () = { }, _ onCompletion: @escaping (_ newDataSource: [ItemType], _ indexesToRemove: [Int]) -> () = { (newDataSource,indexesToRemove) -> () in }) {
         
         let newOperation = BlockOperation(block: {
             
@@ -154,8 +158,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
             
             DispatchQueue.main.sync {
                 beforeCompletion()
-                self.orderedDataSource = orderedDataSourceCopy
-                onCompletion(modifications.indexesToRemove)
+                onCompletion(orderedDataSourceCopy,modifications.indexesToRemove)
             }
             
         })
@@ -163,7 +166,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         
     }
     
-    public func resetItems (_ items: [ItemType], _ beforeCompletion: @escaping () -> () = { }, _ onCompletion: @escaping (_ indexesToRemove: [Int], _ indexesToInsert: [Int]) -> () = { (indexesToRemove,indexesToInsert) -> () in }) {
+    public func resetItems (_ items: [ItemType], _ beforeCompletion: @escaping () -> () = { }, _ onCompletion: @escaping (_ newDataSource: [ItemType], _ indexesToRemove: [Int], _ indexesToInsert: [Int]) -> () = { (newDataSource,indexesToRemove,indexesToInsert) -> () in }) {
         
         let newOperation = BlockOperation(block: {
             
@@ -193,8 +196,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
             
             DispatchQueue.main.sync {
                 beforeCompletion()
-                self.orderedDataSource = orderedNewItems
-                onCompletion(indexesToRemove,indexesToInsert)
+                onCompletion(orderedNewItems,indexesToRemove,indexesToInsert)
             }
         })
         addNewOperation(newOperation)

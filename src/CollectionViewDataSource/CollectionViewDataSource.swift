@@ -70,8 +70,9 @@ open class CollectionViewDataSource<ItemType> : NSObject, UICollectionViewDelega
         if let cv = collectionView {
             dataSource.addItems(items, {
                 //noop
-            }, { (indexesToRemove: [Int], indexesToInsert: [Int], indexesToReload: [Int]) in
+            }, { (newDataSource: [ItemType] ,indexesToRemove: [Int], indexesToInsert: [Int], indexesToReload: [Int]) in
                 cv.performBatchUpdates({
+                    self.dataSource.items = newDataSource
                     var reloadIndexPaths = [IndexPath]()
                     reloadIndexPaths.reserveCapacity(indexesToReload.count)
                     for row in indexesToReload {
@@ -104,8 +105,9 @@ open class CollectionViewDataSource<ItemType> : NSObject, UICollectionViewDelega
         if let cv = collectionView {
             dataSource.removeItems(items, {
                 //noop
-            }, { (indexesToRemove: [Int]) in
+            }, { (newDataSource: [ItemType], indexesToRemove: [Int]) in
                 cv.performBatchUpdates({
+                    self.dataSource.items = newDataSource
                     var deletedIndexPaths = [IndexPath]()
                     deletedIndexPaths.reserveCapacity(indexesToRemove.count)
                     for row in indexesToRemove {
@@ -124,8 +126,9 @@ open class CollectionViewDataSource<ItemType> : NSObject, UICollectionViewDelega
         if let cv = collectionView {
             dataSource.resetItems(items, {
                 //noop
-            }, { (indexesToRemove: [Int], indexesToInsert: [Int]) in
+            }, { (newDataSource: [ItemType], indexesToRemove: [Int], indexesToInsert: [Int]) in
                 cv.performBatchUpdates({
+                    self.dataSource.items = newDataSource
                     var deletedIndexPaths = [IndexPath]()
                     deletedIndexPaths.reserveCapacity(indexesToRemove.count)
                     for row in indexesToRemove {

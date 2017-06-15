@@ -84,7 +84,8 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
             if let t = self.tableView {
                 t.beginUpdates()
             }
-        }, {(deletions,insertions,reloads) -> () in
+        }, {(newDataSource,deletions,insertions,reloads) -> () in
+            self.dataSource.items = newDataSource
             if let t = self.tableView {
                 var reloadIndexPaths = [IndexPath]()
                 reloadIndexPaths.reserveCapacity(reloads.count)
@@ -118,7 +119,8 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
             if let t = self.tableView {
                 t.beginUpdates()
             }
-        }, {(deletions) -> () in
+        }, {(newDataSource,deletions) -> () in
+            self.dataSource.items = newDataSource
             if let t = self.tableView {
                 var deletedIndexPaths = [IndexPath]()
                 deletedIndexPaths.reserveCapacity(deletions.count)
@@ -137,7 +139,8 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
             if let t = self.tableView {
                 t.beginUpdates()
             }
-        }, {(deletions,insertions) -> () in
+        }, {(newDataSource,deletions,insertions) -> () in
+            self.dataSource.items = newDataSource
             if let t = self.tableView {
                 var deletedIndexPaths = [IndexPath]()
                 deletedIndexPaths.reserveCapacity(deletions.count)
