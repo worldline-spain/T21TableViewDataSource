@@ -63,6 +63,8 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         let newOperation = BlockOperation(block: {
             
             var orderedDataSourceCopy = self.orderedDataSource
+            let sortingFunctionCopy = self.innerSortingFunction
+
             var orderedNewItems = [ItemType]()
             orderedNewItems.reserveCapacity(items.count)
             var newItemsHash = Dictionary<Int,Bool>()
@@ -76,7 +78,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
                     orderedNewItems.append(element)
                 }
             }
-            orderedNewItems = orderedNewItems.sorted(by: self.innerSortingFunction)
+            orderedNewItems = orderedNewItems.sorted(by: sortingFunctionCopy)
             
             //calculate the deleted indexes ordered using the generated hash
             removedIndexes.reserveCapacity(newItemsHash.count)
@@ -87,7 +89,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
             }
             
             //find the indexes after the insertions/deletions
-            let modifications = self.findIndexes(removedIndexes, orderedNewItems, &self.orderedDataSource, self.innerSortingFunction)
+            let modifications = self.findIndexes(removedIndexes, orderedNewItems, &self.orderedDataSource, sortingFunctionCopy)
             
             //replace the datasource with the indexes
             
@@ -173,7 +175,8 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
             let sortingFunctionCopy = self.innerSortingFunction
             let oldCount = self.orderedDataSource.count
             
-            let orderedNewItems = items.sorted(by: sortingFunctionCopy)
+            var orderedNewItems = [ItemType]()
+            orderedNewItems.reserveCapacity(items.count)
             var newItemsHash = Dictionary<Int,Bool>()
             var accIndex = 0
             
@@ -185,14 +188,18 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
                 indexesToRemove.append(index)
             }
             
-            for element in orderedNewItems {
+            for element in items {
                 let hash = element.hashValue
                 if newItemsHash[hash] == nil {
                     newItemsHash[hash] = true
+                    orderedNewItems.append(element)
                     indexesToInsert.append(accIndex)
                     accIndex += 1
                 }
             }
+            
+            orderedNewItems = orderedNewItems.sorted(by: sortingFunctionCopy)
+
             
             DispatchQueue.main.sync {
                 beforeCompletion()
