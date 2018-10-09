@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             
             var cell = tableview.dequeueReusableCell(withIdentifier: "cell")
             if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
             }
             
             let title = item.value as! String
