@@ -12,9 +12,9 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
     private var dataSource = ArrayDataSource<ItemType>()
     
     //MARK: Animations
-    public var insertRowAnimation = UITableViewRowAnimation.fade
-    public var deleteRowAnimation = UITableViewRowAnimation.fade
-    public var reloadRowAnimation = UITableViewRowAnimation.fade
+    public var insertRowAnimation = UITableView.RowAnimation.fade
+    public var deleteRowAnimation = UITableView.RowAnimation.fade
+    public var reloadRowAnimation = UITableView.RowAnimation.fade
 
     public var sortingFunction: ( _ a: ItemType,_ b: ItemType) -> Bool = { return $0 < $1 } {
         didSet {
@@ -53,7 +53,7 @@ open class TableViewDataSource<ItemType> : NSObject, UITableViewDataSource, UITa
     public var onTableViewDidSetFunction: (_ tableView: UITableView?) -> Void = { (tableView) in }
     
     public var cellForRowFunction: (_ tableView: UITableView, _ indexPath: IndexPath, _ item: ItemType) -> (UITableViewCell) = {(tableView,indexPath,item) in
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "c")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "c")
         cell.textLabel?.text = "\(indexPath.row)"
         return cell
     }
