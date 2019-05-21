@@ -64,17 +64,14 @@ In order to create a new DataSource class, which may be understood as having a s
 ```
 
 class ViewController: UIViewController {
+    let dataSource = TableViewDataSource<DataSourceItem>()
 
-let dataSource = TableViewDataSource<DataSourceItem>()
+    @IBOutlet weak var tableView: UITableView!
 
-@IBOutlet
-weak var tableView: UITableView!
-
-override func viewDidLoad() {
-super.viewDidLoad()
-dataSource.tableView = tableView
-}
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        dataSource.tableView = tableView
+    }
 }
 
 ```
@@ -129,19 +126,18 @@ In case the blocks are not enough to achieve the desired behaviour, subclassing 
 The following code shows how to add a very simple cellForRow block.
 
 ```
-
 dataSource.cellForRowFunction = { (tableview, indexpath, item) in
+    var cell = tableview.dequeueReusableCell(withIdentifier: "cell")
+    
+    if cell == nil {
+        cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+    }
 
-var cell = tableview.dequeueReusableCell(withIdentifier: "cell")
-if cell == nil {
-cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+    let title = item.value as! String
+    cell?.textLabel?.text = title
+    
+    return cell!
 }
-
-let title = item.value as! String
-cell?.textLabel?.text = title
-return cell!
-}
-
 ```
 
 In this case the DataSourceItem value is cast to String to set the title.
@@ -156,18 +152,16 @@ open class TableViewDataSource<ItemType: Any> : NSObject, UITableViewDataSource,
 }
 
 public protocol DataSourceComparable {
-static func <(lhs: Self, rhs: Self) -> Bool
+    static func <(lhs: Self, rhs: Self) -> Bool
 }
 
 public protocol Hashable : Equatable {
-
-/// The hash value.
-///
-/// Hash values are not guaranteed to be equal across different executions of
-/// your program. Do not save hash values to use during a future execution.
-public var hashValue: Int { get }
+    /// The hash value.
+    ///
+    /// Hash values are not guaranteed to be equal across different executions of
+    /// your program. Do not save hash values to use during a future execution.
+    public var hashValue: Int { get }
 }
-
 ```
 
 * *Hashable* is a standard Swift library protocol and it will be used internally to check if an item already exists or it's a new item in the DataSource collection.
@@ -198,7 +192,7 @@ The main purpose is to offer the possibility to add different types of items int
 // if we want to add this kind of items to the DataSource they should be subclasses of Animal class: 
 let items: [Animal] = [Lion(),Elephant(),Zebra()]
 
-//with the DataSourceItem we can have completely different ItemTypes.
+// with the DataSourceItem we can have completely different ItemTypes.
 let items: [DataSourceItem] =  [DataSourceItem(Lion),DataSourceItem(Train),DataSourceItem(Elephant),DataSourceItem(Plane),DataSourceItem(Zebra),DataSourceItem(Car)]
 ```
 
