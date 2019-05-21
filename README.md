@@ -3,7 +3,7 @@
 > Helper class to manage UITableView data manipulations.
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
-[![CocoaPods compatible](https://img.shields.io/badge/pod-2.5.0-informational.svg)](http://cocoapods.org/pods/Swinject)
+[![CocoaPods compatible](https://img.shields.io/badge/pod-v1.5.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
 [![Swift compatible](https://img.shields.io/badge/Swift-4.2-lightgrey.svg)]()
 [![Platform compatible](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)]()
