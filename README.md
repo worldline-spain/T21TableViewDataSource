@@ -3,8 +3,8 @@
 > Helper class to manage UITableView data manipulations.
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
-[![CocoaPods compatible](https://img.shields.io/badge/pod-v1.5.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
-[![Swift compatible](https://img.shields.io/badge/Swift-4.2-lightgrey.svg)]()
+[![CocoaPods compatible](https://img.shields.io/badge/pod-v2.0.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
+[![Swift compatible](https://img.shields.io/badge/Swift-5.0-orange.svg)]()
 [![Platform compatible](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)]()
 
@@ -277,7 +277,7 @@ let count = dataSource.count
 
 They can also access using the subscript operator to retrieve internal items.
 
-```
+```swift
 let item4 = dataSource[4]
 ```
 
@@ -290,7 +290,7 @@ The only way to modify the internal items is through the designated methods.
 * **Edwin Peña** - *Initial work*
 * **Salvador Martin** - *Initial work*
 * **Patricia De la Rica** - *Carthage integration*
-* **Marcos Molero** - *Carthage integration* 
+* **Marcos Molero** - *Swift 5 Integration and Carthage integration* 
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -300,5 +300,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* To Worldline iOS Dev Team.
+* To Worldline Spain iOS development team.
 
