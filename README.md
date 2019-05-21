@@ -38,7 +38,7 @@ Then run `carthage update --no-use-binaries` command or just `carthage update`. 
 
 ### CocoaPods
 
-To install T21Environment with CocoaPods, add the following lines to your `Podfile`.
+To install T21TableViewDataSource with CocoaPods, add the following lines to your `Podfile`.
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
