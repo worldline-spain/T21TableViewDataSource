@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36D5404C2293D23500B173FB /* T21TableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 36D5404A2293D23500B173FB /* T21TableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36D5404F2293D23500B173FB /* T21TableViewDataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36D540482293D23500B173FB /* T21TableViewDataSource.framework */; };
+		36D540502293D23500B173FB /* T21TableViewDataSource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 36D540482293D23500B173FB /* T21TableViewDataSource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		36D540552293D2C000B173FB /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D1C3E1EDECD7800B7D318 /* CollectionViewDataSource.swift */; };
+		36D540562293D2C000B173FB /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93886271E2E25020071F93D /* ArrayDataSource.swift */; };
+		36D540572293D2C000B173FB /* DataSourceItemGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB0F7D1EC05B4D00473C17 /* DataSourceItemGeneric.swift */; };
+		36D540582293D2C000B173FB /* DataSourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB0F7F1EC05BB900473C17 /* DataSourceItem.swift */; };
+		36D540592293D2C000B173FB /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93886291E2E25020071F93D /* TableViewDataSource.swift */; };
 		9F2B8191216CD53100767950 /* T21TableViewDataSource.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 9F2B8190216CD53100767950 /* T21TableViewDataSource.podspec */; };
 		B93885F81E2E15F20071F93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93885F71E2E15F20071F93D /* AppDelegate.swift */; };
 		B93885FA1E2E15F20071F93D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93885F91E2E15F20071F93D /* ViewController.swift */; };
@@ -23,6 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		36D5404D2293D23500B173FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B93885EC1E2E15F20071F93D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36D540472293D23500B173FB;
+			remoteInfo = T21TableViewDataSource;
+		};
 		B93886091E2E15F20071F93D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B93885EC1E2E15F20071F93D /* Project object */;
@@ -39,9 +54,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		36D540542293D23500B173FB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				36D540502293D23500B173FB /* T21TableViewDataSource.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		36D540482293D23500B173FB /* T21TableViewDataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = T21TableViewDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36D5404A2293D23500B173FB /* T21TableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = T21TableViewDataSource.h; sourceTree = "<group>"; };
+		36D5404B2293D23500B173FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F2B8190216CD53100767950 /* T21TableViewDataSource.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T21TableViewDataSource.podspec; sourceTree = "<group>"; };
-		B93885F41E2E15F20071F93D /* T21TableViewDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = T21TableViewDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B93885F41E2E15F20071F93D /* T21TableViewDataSourceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = T21TableViewDataSourceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B93885F71E2E15F20071F93D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B93885F91E2E15F20071F93D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B93885FC1E2E15F20071F93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,10 +94,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		36D540452293D23500B173FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B93885F11E2E15F20071F93D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D5404F2293D23500B173FB /* T21TableViewDataSource.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +126,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36D540492293D23500B173FB /* T21TableViewDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				36D5404A2293D23500B173FB /* T21TableViewDataSource.h */,
+				36D5404B2293D23500B173FB /* Info.plist */,
+			);
+			path = T21TableViewDataSource;
+			sourceTree = "<group>";
+		};
 		B93885EB1E2E15F20071F93D = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +143,7 @@
 				B93885F61E2E15F20071F93D /* T21TableViewDataSource */,
 				B938860B1E2E15F20071F93D /* T21TableViewDataSourceTests */,
 				B93886161E2E15F20071F93D /* T21TableViewDataSourceUITests */,
+				36D540492293D23500B173FB /* T21TableViewDataSource */,
 				B93885F51E2E15F20071F93D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,9 +151,10 @@
 		B93885F51E2E15F20071F93D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B93885F41E2E15F20071F93D /* T21TableViewDataSource.app */,
+				B93885F41E2E15F20071F93D /* T21TableViewDataSourceExample.app */,
 				B93886081E2E15F20071F93D /* T21TableViewDataSourceTests.xctest */,
 				B93886131E2E15F20071F93D /* T21TableViewDataSourceUITests.xctest */,
+				36D540482293D23500B173FB /* T21TableViewDataSource.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,14 +228,26 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		36D540432293D23500B173FB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36D5404C2293D23500B173FB /* T21TableViewDataSource.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		B93885F31E2E15F20071F93D /* T21TableViewDataSource */ = {
+		36D540472293D23500B173FB /* T21TableViewDataSource */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B938861C1E2E15F20071F93D /* Build configuration list for PBXNativeTarget "T21TableViewDataSource" */;
+			buildConfigurationList = 36D540512293D23500B173FB /* Build configuration list for PBXNativeTarget "T21TableViewDataSource" */;
 			buildPhases = (
-				B93885F01E2E15F20071F93D /* Sources */,
-				B93885F11E2E15F20071F93D /* Frameworks */,
-				B93885F21E2E15F20071F93D /* Resources */,
+				36D540432293D23500B173FB /* Headers */,
+				36D540442293D23500B173FB /* Sources */,
+				36D540452293D23500B173FB /* Frameworks */,
+				36D540462293D23500B173FB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -192,7 +255,26 @@
 			);
 			name = T21TableViewDataSource;
 			productName = T21TableViewDataSource;
-			productReference = B93885F41E2E15F20071F93D /* T21TableViewDataSource.app */;
+			productReference = 36D540482293D23500B173FB /* T21TableViewDataSource.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B93885F31E2E15F20071F93D /* T21TableViewDataSourceExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B938861C1E2E15F20071F93D /* Build configuration list for PBXNativeTarget "T21TableViewDataSourceExample" */;
+			buildPhases = (
+				B93885F01E2E15F20071F93D /* Sources */,
+				B93885F11E2E15F20071F93D /* Frameworks */,
+				B93885F21E2E15F20071F93D /* Resources */,
+				36D540542293D23500B173FB /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36D5404E2293D23500B173FB /* PBXTargetDependency */,
+			);
+			name = T21TableViewDataSourceExample;
+			productName = T21TableViewDataSource;
+			productReference = B93885F41E2E15F20071F93D /* T21TableViewDataSourceExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B93886071E2E15F20071F93D /* T21TableViewDataSourceTests */ = {
@@ -241,6 +323,11 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Worldline;
 				TargetAttributes = {
+					36D540472293D23500B173FB = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = C2UZU6ZLJE;
+						ProvisioningStyle = Automatic;
+					};
 					B93885F31E2E15F20071F93D = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = C2UZU6ZLJE;
@@ -273,14 +360,22 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B93885F31E2E15F20071F93D /* T21TableViewDataSource */,
+				B93885F31E2E15F20071F93D /* T21TableViewDataSourceExample */,
 				B93886071E2E15F20071F93D /* T21TableViewDataSourceTests */,
 				B93886121E2E15F20071F93D /* T21TableViewDataSourceUITests */,
+				36D540472293D23500B173FB /* T21TableViewDataSource */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		36D540462293D23500B173FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B93885F21E2E15F20071F93D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +404,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		36D540442293D23500B173FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36D540552293D2C000B173FB /* CollectionViewDataSource.swift in Sources */,
+				36D540562293D2C000B173FB /* ArrayDataSource.swift in Sources */,
+				36D540572293D2C000B173FB /* DataSourceItemGeneric.swift in Sources */,
+				36D540582293D2C000B173FB /* DataSourceItem.swift in Sources */,
+				36D540592293D2C000B173FB /* TableViewDataSource.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B93885F01E2E15F20071F93D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,14 +449,19 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		36D5404E2293D23500B173FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36D540472293D23500B173FB /* T21TableViewDataSource */;
+			targetProxy = 36D5404D2293D23500B173FB /* PBXContainerItemProxy */;
+		};
 		B938860A1E2E15F20071F93D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B93885F31E2E15F20071F93D /* T21TableViewDataSource */;
+			target = B93885F31E2E15F20071F93D /* T21TableViewDataSourceExample */;
 			targetProxy = B93886091E2E15F20071F93D /* PBXContainerItemProxy */;
 		};
 		B93886151E2E15F20071F93D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B93885F31E2E15F20071F93D /* T21TableViewDataSource */;
+			target = B93885F31E2E15F20071F93D /* T21TableViewDataSourceExample */;
 			targetProxy = B93886141E2E15F20071F93D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -374,6 +486,69 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		36D540522293D23500B173FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C2UZU6ZLJE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = T21TableViewDataSource/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tempos21.T21TableViewDataSource;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		36D540532293D23500B173FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C2UZU6ZLJE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = T21TableViewDataSource/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tempos21.T21TableViewDataSource;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B938861A1E2E15F20071F93D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -488,7 +663,9 @@
 		B938861D1E2E15F20071F93D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = C2UZU6ZLJE;
 				INFOPLIST_FILE = T21TableViewDataSource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -502,7 +679,9 @@
 		B938861E1E2E15F20071F93D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = C2UZU6ZLJE;
 				INFOPLIST_FILE = T21TableViewDataSource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -574,6 +753,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		36D540512293D23500B173FB /* Build configuration list for PBXNativeTarget "T21TableViewDataSource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36D540522293D23500B173FB /* Debug */,
+				36D540532293D23500B173FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B93885EF1E2E15F20071F93D /* Build configuration list for PBXProject "T21TableViewDataSource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -583,7 +771,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B938861C1E2E15F20071F93D /* Build configuration list for PBXNativeTarget "T21TableViewDataSource" */ = {
+		B938861C1E2E15F20071F93D /* Build configuration list for PBXNativeTarget "T21TableViewDataSourceExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B938861D1E2E15F20071F93D /* Debug */,
