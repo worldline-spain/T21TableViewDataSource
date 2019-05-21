@@ -20,8 +20,8 @@ public class DataSourceItemGeneric<Type> : DataSourceComparable, Hashable {
         self.getIndexClosure = getIndexClosure
     }
     
-    public var hashValue: Int {
-        return self.uid.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.uid.hashValue)
     }
     
     public var index: Float {

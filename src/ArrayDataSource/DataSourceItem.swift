@@ -20,8 +20,8 @@ public class DataSourceItem : DataSourceComparable, Hashable {
         self.index = index
     }
     
-    public var hashValue: Int {
-        return self.uid.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.uid.hashValue)
     }
 }
 
