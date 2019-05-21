@@ -1,4 +1,12 @@
-#T21TableViewDataSource
+
+# T21TableViewDataSource
+> Helper class to manage UITableView data manipulations.
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
+[![CocoaPods compatible](https://img.shields.io/badge/pod-v1.5.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
+[![Swift compatible](https://img.shields.io/badge/Swift-4.2-lightgrey.svg)]()
+[![Platform compatible](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)]()
 
 The TableViewDataSource class is a helper class to manage TableView data manipulations like **additions, deletions** and **updates**. It offers an easy way to update the tableview datasource, **applying a concrete sorting** and **avoiding item duplications** when adding already existing entities into the datasource.
 
@@ -13,42 +21,68 @@ Example 1                |  Example 2
 :-----------------------:|:-------------------------:
 ![](doc/Playground.gif)  |   ![](doc/Playground2.gif)
 
+## Installation
 
-##Version 1.0.0
+T21TableViewDataSource is available through [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://cocoapods.org).
 
-For the moment this version only offers support for tableviews with only one section. We hope to support multiple sections in a future.
+### Carthage
+
+To install T21TableViewDataSource with Carthage, add the following line to your `Cartfile`.
+
+```ruby
+github "worldline-spain/T21TableViewDataSource"
+```
+
+Then run `carthage update --no-use-binaries` command or just `carthage update`. For details of the installation and usage of Carthage, visit [its project page](https://github.com/Carthage/Carthage).
+
+
+### CocoaPods
+
+To install T21TableViewDataSource with CocoaPods, add the following lines to your `Podfile`.
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0' 
+use_frameworks!
+
+pod 'T21TableViewDataSource'
+```
+
+Then run `pod install` command. For details of the installation and usage of CocoaPods, visit [its official website](https://cocoapods.org).
+
+
+
+## How to use
+
+> **Important**: For the moment this version only offers support for UITableViews with only one section. We hope to support multiple sections in a future.
+
 
 ### Setting up a DataSource and configuring its TableView
 
 In order to create a new DataSource class, which may be understood as having a simple Array of items, it's a simple as that.
 
-```
-
+```swift
 class ViewController: UIViewController {
-
     let dataSource = TableViewDataSource<DataSourceItem>()
-    
-    @IBOutlet
-    weak var tableView: UITableView!
-    
+
+    @IBOutlet weak var tableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.tableView = tableView
     }
-    
 }
-
 ```
 
 The TableViewDataSource is a template class, in this case using the DataSourceItem class type during the constructor specifies the `ItemType` of the internal array. In this case they will be DataSourceItem instances.
 
-```
+```swift
 TableViewDataSource<DataSourceItem>()
 ```
 
 Later we will see, what's a **DataSourceItem** class, for the moment let's assume that it's a data container class which holds the needed data to present the cells. For example we could have used a simple *Int* or *String* classes. 
 
-```
+```swift
 [DataSourceItem,DataSourceItem,DataSourceItem] or [1,2,3,4,5] or ["a","b","c","d","e"]
 ```
 
@@ -56,19 +90,19 @@ When we assign a tableView to our dataSource instance, this one sets the tablevi
 
 The UITableView protocol related methods can be easily configured using the following blocks:
 
-```
+```swift
 public var onTableViewDidSetFunction: (_ tableView: UITableView?) -> Void
-    
+
 public var cellForRowFunction: (_ tableView: UITableView, _ indexPath: IndexPath, _ item: ItemType) -> (UITableViewCell)
-    
+
 public var heightForRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> CGFloat
-    
+
 public var didSelectRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> Void
-    
+
 public var didDeselectRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> Void
-    
+
 public var willSelectRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> IndexPath?
-    
+
 public var willDeselectRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> IndexPath?
 
 ```
@@ -89,20 +123,19 @@ In case the blocks are not enough to achieve the desired behaviour, subclassing 
 
 The following code shows how to add a very simple cellForRow block.
 
-```
-    
+```swift
 dataSource.cellForRowFunction = { (tableview, indexpath, item) in
-    
     var cell = tableview.dequeueReusableCell(withIdentifier: "cell")
+    
     if cell == nil {
         cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
     }
-    
+
     let title = item.value as! String
     cell?.textLabel?.text = title
+    
     return cell!
 }
-        
 ```
 
 In this case the DataSourceItem value is cast to String to set the title.
@@ -111,9 +144,9 @@ In this case the DataSourceItem value is cast to String to set the title.
 
 The TableViewDataSource class uses a generic `ItemType` for the internal items. This `ItemType` **must** **implement** the following **protocols**: `DataSourceComparable ` and `Hashable `
 
-```
+```swift
 open class TableViewDataSource<ItemType: Any> : NSObject, UITableViewDataSource, UITableViewDelegate where ItemType: DataSourceComparable, ItemType: Hashable {
-	....
+....
 }
 
 public protocol DataSourceComparable {
@@ -121,14 +154,12 @@ public protocol DataSourceComparable {
 }
 
 public protocol Hashable : Equatable {
-
     /// The hash value.
     ///
     /// Hash values are not guaranteed to be equal across different executions of
     /// your program. Do not save hash values to use during a future execution.
     public var hashValue: Int { get }
 }
-
 ```
 
 * *Hashable* is a standard Swift library protocol and it will be used internally to check if an item already exists or it's a new item in the DataSource collection.
@@ -140,26 +171,26 @@ Each item you add to the DataSource must conform to this protocols. The client c
 
 The DataSourceItem class is just a simple wrapper class that already implements the required protocols *Hashable* and *DataSourceComparable*.
 
-```
+```swift
 public class DataSourceItem : DataSourceComparable, Hashable {
 
-    public private(set) var value: Any
+public private(set) var value: Any
 
-    public private(set) var uid: String
+public private(set) var uid: String
 
-    public private(set) var index: Float
+public private(set) var index: Float
 
-    public init(_ value: Any, _ uid: String, _ index: Float = default)
+public init(_ value: Any, _ uid: String, _ index: Float = default)
 }
 ```
 
 The main purpose is to offer the possibility to add different types of items into the DataSource using the **Any** value. Of course, we will then have to use a downcast `as!` to access the different types. For example we could have: 
 
-```
+```swift
 // if we want to add this kind of items to the DataSource they should be subclasses of Animal class: 
 let items: [Animal] = [Lion(),Elephant(),Zebra()]
 
-//with the DataSourceItem we can have completely different ItemTypes.
+// with the DataSourceItem we can have completely different ItemTypes.
 let items: [DataSourceItem] =  [DataSourceItem(Lion),DataSourceItem(Train),DataSourceItem(Elephant),DataSourceItem(Plane),DataSourceItem(Zebra),DataSourceItem(Car)]
 ```
 
@@ -172,9 +203,8 @@ The client is always free to create its own classes, but in most cases DataSourc
 
 By default the DataSource applies the following ascending sorting function:
 
-```
+```swift
 public var sortingFunction: ( _ a: ItemType, _ b: ItemType) -> Bool = { return $0 < $1 }
-
 ```
 In this case as the ItemTypes implement the DataSourceComparable they are easily compared. The client can set a more complex sorting function.
 
@@ -182,7 +212,7 @@ In this case as the ItemTypes implement the DataSourceComparable they are easily
 
 One of the features of the TableViewDataSource class is the ability to update existing rows/items by its unique identifier. In this example we are adding 3 items (in this case our type will be simple Strings), and then we are updating the first item added with a new title and a new sorting value.
 
-```
+```swift
 let itemA = DataSourceItem("This item is A","itemA",1.0)
 let itemB = DataSourceItem("This item is B","itemB",2.0)
 let itemC = DataSourceItem("This item is C","itemC",3.0)
@@ -193,12 +223,11 @@ self.dataSource.addItems([itemB,itemA,itemC]) // we are adding our items unsorte
 // - This item is A
 // - This item is B
 // - This item is C
-
 ```
 
 Now let's update the title of the itemC with "Updated title for C".
 
-```
+```swift
 let newItemC = DataSourceItem("Updated title for C","itemC",3.0)
 self.dataSource.addItems([newItemC])
 
@@ -210,7 +239,7 @@ self.dataSource.addItems([newItemC])
 
 Now let's update the index (sorting value) for the itemC with 0.5.
 
-```
+```swift
 let newItemC = DataSourceItem("Updated title for C","itemC",0.5)
 self.dataSource.addItems([newItemC])
 
@@ -234,7 +263,7 @@ In the previous examples we have seen how to add items to the DataSource, just k
 
 Removing items it's just as simple as adding them.
 
-```
+```swift
 dataSource.removeItems([DataSourceItem("","itemC")])
 ```
 
@@ -242,7 +271,7 @@ dataSource.removeItems([DataSourceItem("","itemC")])
 
 Clients can ask the datasource instance how many items they have.
 
-```
+```swift
 let count = dataSource.count
 ```
 
@@ -253,3 +282,23 @@ let item4 = dataSource[4]
 ```
 
 The only way to modify the internal items is through the designated methods.
+
+
+## Authors
+
+* **Eloi Guzman Ceron** - *Initial work* 
+* **Edwin Peña** - *Initial work*
+* **Salvador Martin** - *Initial work*
+* **Patricia De la Rica** - *Carthage integration*
+* **Marcos Molero** - *Carthage integration* 
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* To Worldline iOS Dev Team.
+
