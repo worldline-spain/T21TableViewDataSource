@@ -1,4 +1,11 @@
 #T21TableViewDataSource
+> Helper class to manage UITableView data manipulations.
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
+[![CocoaPods compatible](https://img.shields.io/badge/pod-2.5.0-informational.svg)](http://cocoapods.org/pods/Swinject)
+[![Swift compatible](https://img.shields.io/badge/Swift-4.2-lightgrey.svg)]()
+[![Platform compatible](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)]()
 
 The TableViewDataSource class is a helper class to manage TableView data manipulations like **additions, deletions** and **updates**. It offers an easy way to update the tableview datasource, **applying a concrete sorting** and **avoiding item duplications** when adding already existing entities into the datasource.
 
@@ -13,10 +20,41 @@ Example 1                |  Example 2
 :-----------------------:|:-------------------------:
 ![](doc/Playground.gif)  |   ![](doc/Playground2.gif)
 
+## Installation
 
-##Version 1.0.0
+T21TableViewDataSource is available through [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://cocoapods.org).
 
-For the moment this version only offers support for tableviews with only one section. We hope to support multiple sections in a future.
+### Carthage
+
+To install T21TableViewDataSource with Carthage, add the following line to your `Cartfile`.
+
+```
+github "worldline-spain/T21TableViewDataSource"
+```
+
+Then run `carthage update --no-use-binaries` command or just `carthage update`. For details of the installation and usage of Carthage, visit [its project page](https://github.com/Carthage/Carthage).
+
+
+### CocoaPods
+
+To install T21Environment with CocoaPods, add the following lines to your `Podfile`.
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0' 
+use_frameworks!
+
+pod 'T21TableViewDataSource'
+```
+
+Then run `pod install` command. For details of the installation and usage of CocoaPods, visit [its official website](https://cocoapods.org).
+
+
+
+## How to use
+
+> **Important**: For the moment this version only offers support for UITableViews with only one section. We hope to support multiple sections in a future.
+
 
 ### Setting up a DataSource and configuring its TableView
 
@@ -26,16 +64,16 @@ In order to create a new DataSource class, which may be understood as having a s
 
 class ViewController: UIViewController {
 
-    let dataSource = TableViewDataSource<DataSourceItem>()
-    
-    @IBOutlet
-    weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        dataSource.tableView = tableView
-    }
-    
+let dataSource = TableViewDataSource<DataSourceItem>()
+
+@IBOutlet
+weak var tableView: UITableView!
+
+override func viewDidLoad() {
+super.viewDidLoad()
+dataSource.tableView = tableView
+}
+
 }
 
 ```
@@ -58,17 +96,17 @@ The UITableView protocol related methods can be easily configured using the foll
 
 ```
 public var onTableViewDidSetFunction: (_ tableView: UITableView?) -> Void
-    
+
 public var cellForRowFunction: (_ tableView: UITableView, _ indexPath: IndexPath, _ item: ItemType) -> (UITableViewCell)
-    
+
 public var heightForRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> CGFloat
-    
+
 public var didSelectRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> Void
-    
+
 public var didDeselectRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> Void
-    
+
 public var willSelectRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> IndexPath?
-    
+
 public var willDeselectRowFunction: (_ tableView: UITableView,_ indexPath: IndexPath, _ item: ItemType) -> IndexPath?
 
 ```
@@ -90,19 +128,19 @@ In case the blocks are not enough to achieve the desired behaviour, subclassing 
 The following code shows how to add a very simple cellForRow block.
 
 ```
-    
+
 dataSource.cellForRowFunction = { (tableview, indexpath, item) in
-    
-    var cell = tableview.dequeueReusableCell(withIdentifier: "cell")
-    if cell == nil {
-        cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-    }
-    
-    let title = item.value as! String
-    cell?.textLabel?.text = title
-    return cell!
+
+var cell = tableview.dequeueReusableCell(withIdentifier: "cell")
+if cell == nil {
+cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
 }
-        
+
+let title = item.value as! String
+cell?.textLabel?.text = title
+return cell!
+}
+
 ```
 
 In this case the DataSourceItem value is cast to String to set the title.
@@ -113,20 +151,20 @@ The TableViewDataSource class uses a generic `ItemType` for the internal items. 
 
 ```
 open class TableViewDataSource<ItemType: Any> : NSObject, UITableViewDataSource, UITableViewDelegate where ItemType: DataSourceComparable, ItemType: Hashable {
-	....
+....
 }
 
 public protocol DataSourceComparable {
-    static func <(lhs: Self, rhs: Self) -> Bool
+static func <(lhs: Self, rhs: Self) -> Bool
 }
 
 public protocol Hashable : Equatable {
 
-    /// The hash value.
-    ///
-    /// Hash values are not guaranteed to be equal across different executions of
-    /// your program. Do not save hash values to use during a future execution.
-    public var hashValue: Int { get }
+/// The hash value.
+///
+/// Hash values are not guaranteed to be equal across different executions of
+/// your program. Do not save hash values to use during a future execution.
+public var hashValue: Int { get }
 }
 
 ```
@@ -143,13 +181,13 @@ The DataSourceItem class is just a simple wrapper class that already implements 
 ```
 public class DataSourceItem : DataSourceComparable, Hashable {
 
-    public private(set) var value: Any
+public private(set) var value: Any
 
-    public private(set) var uid: String
+public private(set) var uid: String
 
-    public private(set) var index: Float
+public private(set) var index: Float
 
-    public init(_ value: Any, _ uid: String, _ index: Float = default)
+public init(_ value: Any, _ uid: String, _ index: Float = default)
 }
 ```
 
@@ -253,3 +291,23 @@ let item4 = dataSource[4]
 ```
 
 The only way to modify the internal items is through the designated methods.
+
+
+## Authors
+
+* **Eloi Guzman Ceron** - *Initial work* 
+* **Edwin Peña** - *Initial work*
+* **Salvador Martin** - *Initial work*
+* **Patricia De la Rica** - *Carthage integration*
+* **Marcos Molero** - *Carthage integration* 
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* To Worldline iOS Dev Team.
+
