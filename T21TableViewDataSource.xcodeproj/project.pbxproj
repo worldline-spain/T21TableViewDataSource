@@ -326,6 +326,7 @@
 					36D540472293D23500B173FB = {
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = C2UZU6ZLJE;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					B93885F31E2E15F20071F93D = {
@@ -352,6 +353,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -511,7 +513,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tempos21.T21TableViewDataSource;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -542,7 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tempos21.T21TableViewDataSource;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
