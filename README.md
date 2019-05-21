@@ -29,7 +29,7 @@ T21TableViewDataSource is available through [Carthage](https://github.com/Cartha
 
 To install T21TableViewDataSource with Carthage, add the following line to your `Cartfile`.
 
-```
+```ruby
 github "worldline-spain/T21TableViewDataSource"
 ```
 
@@ -61,8 +61,7 @@ Then run `pod install` command. For details of the installation and usage of Coc
 
 In order to create a new DataSource class, which may be understood as having a simple Array of items, it's a simple as that.
 
-```
-
+```swift
 class ViewController: UIViewController {
     let dataSource = TableViewDataSource<DataSourceItem>()
 
@@ -73,18 +72,17 @@ class ViewController: UIViewController {
         dataSource.tableView = tableView
     }
 }
-
 ```
 
 The TableViewDataSource is a template class, in this case using the DataSourceItem class type during the constructor specifies the `ItemType` of the internal array. In this case they will be DataSourceItem instances.
 
-```
+```swift
 TableViewDataSource<DataSourceItem>()
 ```
 
 Later we will see, what's a **DataSourceItem** class, for the moment let's assume that it's a data container class which holds the needed data to present the cells. For example we could have used a simple *Int* or *String* classes. 
 
-```
+```swift
 [DataSourceItem,DataSourceItem,DataSourceItem] or [1,2,3,4,5] or ["a","b","c","d","e"]
 ```
 
@@ -92,7 +90,7 @@ When we assign a tableView to our dataSource instance, this one sets the tablevi
 
 The UITableView protocol related methods can be easily configured using the following blocks:
 
-```
+```swift
 public var onTableViewDidSetFunction: (_ tableView: UITableView?) -> Void
 
 public var cellForRowFunction: (_ tableView: UITableView, _ indexPath: IndexPath, _ item: ItemType) -> (UITableViewCell)
@@ -125,7 +123,7 @@ In case the blocks are not enough to achieve the desired behaviour, subclassing 
 
 The following code shows how to add a very simple cellForRow block.
 
-```
+```swift
 dataSource.cellForRowFunction = { (tableview, indexpath, item) in
     var cell = tableview.dequeueReusableCell(withIdentifier: "cell")
     
@@ -146,7 +144,7 @@ In this case the DataSourceItem value is cast to String to set the title.
 
 The TableViewDataSource class uses a generic `ItemType` for the internal items. This `ItemType` **must** **implement** the following **protocols**: `DataSourceComparable ` and `Hashable `
 
-```
+```swift
 open class TableViewDataSource<ItemType: Any> : NSObject, UITableViewDataSource, UITableViewDelegate where ItemType: DataSourceComparable, ItemType: Hashable {
 ....
 }
@@ -173,7 +171,7 @@ Each item you add to the DataSource must conform to this protocols. The client c
 
 The DataSourceItem class is just a simple wrapper class that already implements the required protocols *Hashable* and *DataSourceComparable*.
 
-```
+```swift
 public class DataSourceItem : DataSourceComparable, Hashable {
 
 public private(set) var value: Any
@@ -188,7 +186,7 @@ public init(_ value: Any, _ uid: String, _ index: Float = default)
 
 The main purpose is to offer the possibility to add different types of items into the DataSource using the **Any** value. Of course, we will then have to use a downcast `as!` to access the different types. For example we could have: 
 
-```
+```swift
 // if we want to add this kind of items to the DataSource they should be subclasses of Animal class: 
 let items: [Animal] = [Lion(),Elephant(),Zebra()]
 
@@ -205,9 +203,8 @@ The client is always free to create its own classes, but in most cases DataSourc
 
 By default the DataSource applies the following ascending sorting function:
 
-```
+```swift
 public var sortingFunction: ( _ a: ItemType, _ b: ItemType) -> Bool = { return $0 < $1 }
-
 ```
 In this case as the ItemTypes implement the DataSourceComparable they are easily compared. The client can set a more complex sorting function.
 
@@ -215,7 +212,7 @@ In this case as the ItemTypes implement the DataSourceComparable they are easily
 
 One of the features of the TableViewDataSource class is the ability to update existing rows/items by its unique identifier. In this example we are adding 3 items (in this case our type will be simple Strings), and then we are updating the first item added with a new title and a new sorting value.
 
-```
+```swift
 let itemA = DataSourceItem("This item is A","itemA",1.0)
 let itemB = DataSourceItem("This item is B","itemB",2.0)
 let itemC = DataSourceItem("This item is C","itemC",3.0)
@@ -226,12 +223,11 @@ self.dataSource.addItems([itemB,itemA,itemC]) // we are adding our items unsorte
 // - This item is A
 // - This item is B
 // - This item is C
-
 ```
 
 Now let's update the title of the itemC with "Updated title for C".
 
-```
+```swift
 let newItemC = DataSourceItem("Updated title for C","itemC",3.0)
 self.dataSource.addItems([newItemC])
 
@@ -243,7 +239,7 @@ self.dataSource.addItems([newItemC])
 
 Now let's update the index (sorting value) for the itemC with 0.5.
 
-```
+```swift
 let newItemC = DataSourceItem("Updated title for C","itemC",0.5)
 self.dataSource.addItems([newItemC])
 
@@ -267,7 +263,7 @@ In the previous examples we have seen how to add items to the DataSource, just k
 
 Removing items it's just as simple as adding them.
 
-```
+```swift
 dataSource.removeItems([DataSourceItem("","itemC")])
 ```
 
@@ -275,7 +271,7 @@ dataSource.removeItems([DataSourceItem("","itemC")])
 
 Clients can ask the datasource instance how many items they have.
 
-```
+```swift
 let count = dataSource.count
 ```
 
