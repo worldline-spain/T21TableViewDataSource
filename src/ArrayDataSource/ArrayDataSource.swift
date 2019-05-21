@@ -33,7 +33,7 @@ public class ArrayDataSource<ItemType> where ItemType: DataSourceComparable, Ite
         return orderedDataSource.count
     }
     
-    internal(set) var items: [ItemType] {
+    var items: [ItemType] {
         get {
             return orderedDataSource
         }
