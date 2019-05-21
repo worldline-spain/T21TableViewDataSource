@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.requires_arc            = true
   s.homepage                = "https://github.com/worldline-spain/T21TableViewDataSource"
   s.license                 = "https://github.com/worldline-spain/T21TableViewDataSource/blob/master/LICENSE"
-  s.swift_version           = '4.2'
+  s.swift_version           = '5.0'
 end
