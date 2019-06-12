@@ -3,10 +3,12 @@
 > Helper class to manage UITableView data manipulations.
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
-[![CocoaPods compatible](https://img.shields.io/badge/pod-v2.0.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
+[![CocoaPods compatible](https://img.shields.io/badge/pod-v2.1.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
 [![Swift compatible](https://img.shields.io/badge/Swift-5.0-orange.svg)]()
 [![Platform compatible](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)]()
+[![SwiftPM](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+
 
 The TableViewDataSource class is a helper class to manage TableView data manipulations like **additions, deletions** and **updates**. It offers an easy way to update the tableview datasource, **applying a concrete sorting** and **avoiding item duplications** when adding already existing entities into the datasource.
 
@@ -23,7 +25,7 @@ Example 1                |  Example 2
 
 ## Installation
 
-T21TableViewDataSource is available through [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://cocoapods.org).
+T21TableViewDataSource is available through [Carthage](https://github.com/Carthage/Carthage), [CocoaPods](https://cocoapods.org) or [Swift Package Manager](https://swift.org/package-manager/).
 
 ### Carthage
 
@@ -50,7 +52,14 @@ pod 'T21TableViewDataSource'
 
 Then run `pod install` command. For details of the installation and usage of CocoaPods, visit [its official website](https://cocoapods.org).
 
+### Swift Package Manager
+To integrate using Apple's Swift Package Manager, add the following as a dependency to your `Package.swift`.
 
+```rubi
+.package(url: "https://github.com/worldline-spain/T21TableViewDataSource.git", .upToNextMajor(from: "2.0.0"))
+```
+
+For details of the installation and usage of Swift Package Manager, visit [its official website](https://swift.org/package-manager/).
 
 ## How to use
 
