@@ -15,6 +15,7 @@
 		36D540572293D2C000B173FB /* DataSourceItemGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB0F7D1EC05B4D00473C17 /* DataSourceItemGeneric.swift */; };
 		36D540582293D2C000B173FB /* DataSourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB0F7F1EC05BB900473C17 /* DataSourceItem.swift */; };
 		36D540592293D2C000B173FB /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93886291E2E25020071F93D /* TableViewDataSource.swift */; };
+		3F71E9F822B0FC4C00355154 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F71E9F722B0FC4C00355154 /* Package.swift */; };
 		9F2B8191216CD53100767950 /* T21TableViewDataSource.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 9F2B8190216CD53100767950 /* T21TableViewDataSource.podspec */; };
 		B93885F81E2E15F20071F93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93885F71E2E15F20071F93D /* AppDelegate.swift */; };
 		B93885FA1E2E15F20071F93D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93885F91E2E15F20071F93D /* ViewController.swift */; };
@@ -72,6 +73,7 @@
 		36D540482293D23500B173FB /* T21TableViewDataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = T21TableViewDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D5404A2293D23500B173FB /* T21TableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = T21TableViewDataSource.h; sourceTree = "<group>"; };
 		36D5404B2293D23500B173FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F71E9F722B0FC4C00355154 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		9F2B8190216CD53100767950 /* T21TableViewDataSource.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T21TableViewDataSource.podspec; sourceTree = "<group>"; };
 		B93885F41E2E15F20071F93D /* T21TableViewDataSourceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = T21TableViewDataSourceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B93885F71E2E15F20071F93D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		B93885EB1E2E15F20071F93D = {
 			isa = PBXGroup;
 			children = (
+				3F71E9F722B0FC4C00355154 /* Package.swift */,
 				9F2B8190216CD53100767950 /* T21TableViewDataSource.podspec */,
 				B93886251E2E18860071F93D /* src */,
 				B93885F61E2E15F20071F93D /* T21TableViewDataSource */,
@@ -426,6 +429,7 @@
 				B938862A1E2E25020071F93D /* ArrayDataSource.swift in Sources */,
 				B9FB0F7E1EC05B4D00473C17 /* DataSourceItemGeneric.swift in Sources */,
 				B938862B1E2E25020071F93D /* TableViewDataSource.swift in Sources */,
+				3F71E9F822B0FC4C00355154 /* Package.swift in Sources */,
 				B93885F81E2E15F20071F93D /* AppDelegate.swift in Sources */,
 				B9FB0F801EC05BB900473C17 /* DataSourceItem.swift in Sources */,
 				B96D1C3F1EDECD7800B7D318 /* CollectionViewDataSource.swift in Sources */,
